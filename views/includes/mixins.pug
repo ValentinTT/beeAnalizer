@@ -1,0 +1,23 @@
+mixin head(title, styles=[], scripts=[])
+  meta(charset="UTF-8")
+  meta(name="viewport" content="width=device-width, initial-scale=1.0")
+  meta(http-equiv="X-UA-Compatible" content="ie=edge")
+  each s in styles, scripts
+    link(href=s, rel="stylesheet")
+  else 
+    // No stylesheets passed
+  each s in scripts
+    script(src=s)
+  else 
+    //No scripts passed
+  if title
+    title=title
+  else 
+    title="Default Title"
+
+mixin footerScripts(scripts = [])
+  for s in scripts
+    script(src=s)
+  else 
+    //No scripts passed
+    
