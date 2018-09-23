@@ -1,0 +1,17 @@
+include includes/mixins
+
+html
+  head
+    +head("Home", ["/styles/profile.min.css"], ["https://code.jquery.com/jquery-3.3.1.min.js"])
+  body
+    header
+      h1.title
+        |Bee Analizer
+      .User-area
+        .User-avatar
+          img(src="https://via.placeholder.com/40x40")
+        ul.User-Dropdown
+          li
+            a(href="/auth/logout") Log out
+  
+    +footerScripts(["/js/profile.js"])

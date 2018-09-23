@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800");
+* {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 20% 1fr;
+      grid-template-columns: 20% 1fr;
+  -ms-grid-rows: auto 1fr;
+      grid-template-rows: auto 1fr;
+      grid-template-areas: "header header" "nav board";
+}
+
+header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: header;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 5px 25px;
+  height: 50px;
+  -webkit-box-shadow: 3px 3px 3px -3px rgba(214, 214, 214, 0.78);
+          box-shadow: 3px 3px 3px -3px rgba(214, 214, 214, 0.78);
+}
+
+header .title {
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  line-height: 200%;
+}
+
+.User-area {
+  width: 45px;
+  height: 45px;
+  position: relative;
+  cursor: pointer;
+}
+
+.User-area > .User-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  border: 2px solid #fff;
+  -webkit-box-shadow: 0px 0px 12px -5px #000;
+          box-shadow: 0px 0px 12px -5px #000;
+}
+
+.User-area > .User-avatar > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+}
+
+.User-Dropdown {
+  display: none;
+  position: absolute;
+  border-radius: 7px;
+  background: #fff;
+  -webkit-box-shadow: 0px 0px 8px rgba(214, 214, 214, 0.78);
+          box-shadow: 0px 0px 8px rgba(214, 214, 214, 0.78);
+  list-style: none;
+  padding: 0 20px;
+  width: 150px;
+  margin: 0;
+  top: 70px;
+  right: -9%;
+}
+
+.User-Dropdown:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  margin-left: -0.5em;
+  right: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 7px solid black;
+  border-color: transparent transparent #ffffff #ffffff;
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+  -webkit-box-shadow: -3px 3px 3px -3px rgba(214, 214, 214, 0.78);
+          box-shadow: -3px 3px 3px -3px rgba(214, 214, 214, 0.78);
+}
+
+.User-Dropdown.U-open {
+  display: block;
+}
+
+.User-Dropdown > li {
+  padding: 0px;
+  line-height: 47px;
+  border-bottom: 1px solid rgba(215, 215, 215, 0.17);
+}
+
+.User-Dropdown > li:last-child {
+  border-bottom: 0px;
+}
+
+.User-Dropdown > li > a {
+  font-size: 13px;
+  padding: 15px 25px 16px 10px;
+  text-decoration: none;
+  color: #1787e0;
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+}
+
+.User-Dropdown span {
+  background: #16d67a;
+  padding: 3px 10px;
+  color: #fff;
+  border-radius: 30px;
+  font-size: 13px;
+}
+
+.User-Dropdown > li:before {
+  content: '';
+  width: 0px;
+  height: 40px;
+  position: absolute;
+  background: #2196F3;
+  margin-top: 4px;
+  border-radius: 0 1px 1px 0;
+  left: 0px;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+.User-Dropdown > li:hover:before {
+  width: 5px;
+  border-radius: 30px;
+}
+
+.User-Dropdown > li a:hover {
+  margin-left: 5px;
+}
+/*# sourceMappingURL=profile.css.map */
