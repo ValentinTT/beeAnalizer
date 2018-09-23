@@ -4,14 +4,31 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel-node": "babel-node --presets=env",
+    "start": "nodemon server --exec babel-node"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
   },
   "author": "Valentin TT",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "cookie-session": "^2.0.0-beta.3",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
-    "express-session": "^1.15.6"
+    "express-session": "^1.15.6",
+    "mongoose": "^5.2.17",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^1.0.0",
+    "pug": "^2.0.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^1.18.3"
   }
 }
