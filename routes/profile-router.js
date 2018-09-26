@@ -9,7 +9,11 @@ const authCheck = (req, res, next) => {
 
 //profile 
 routes.get('/', authCheck, (req, res) => {
-  res.render('profile');
+  console.log(req.user);
+  res.render('profile', {
+    //apiarios: req.user.apiaries,
+    avatarPhoto: req.user.googlePhotoUrl
+  });
 });
 
 export const Router = routes;

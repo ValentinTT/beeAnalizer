@@ -11,7 +11,6 @@ passport.serializeUser((user, done) => done(null, user.id));
 //Atach the user to the req object
 passport.deserializeUser((id, done) =>
   Beekeeper.findById(id).then(beekeeper => {
-    console.log("bb: ", beekeeper);
     done(null, beekeeper);
   }));
 
