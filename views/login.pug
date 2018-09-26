@@ -1,24 +1,16 @@
 include includes/mixins
 
+doctype html
 html
   head
-    +head("Log in", ["/styles/login.min.css", "https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"])
- 
-  body
+    +head("Log in", ["/semantic.css", "/styles/login.min.css"], ["https://code.jquery.com/jquery-3.3.1.min.js", "/semantic.js"])
+  body 
     header
-      h1.title
+      h1.ui.center.aligned.huge.header
+        i.yellow.forumbee.icon
         |Bee Analizer
-    main
-        a.btn.log-in-btn(href="/auth/google")
-          i.fa.fa-google
-          span Log in with Google +
-        a.btn.sign-up-btn(href="/auth/google")
-          i.fa.fa-google
-          span Sign up with Google +
-  //-
-    footer
-      p
-        |Coded by
-        a(href="") Valentin TT
-        <script
+      a(href="/auth/google").ui.inverted.big.red.button
+        i.google.plus.icon
+        |Ingresar
+    script(src="loggin.js")
   
