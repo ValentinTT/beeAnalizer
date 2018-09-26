@@ -1,0 +1,21 @@
+mixin sidebar(apiarios=[]) 
+  nav.ui.sidebar.vertical.menu
+      h3.ui.nav-title
+        |Tus apiarios
+      .content
+        #ap-menu.ui.secondary.vertical.menu
+          for ap in apiarios
+            .item
+              .menu
+                .header=ap.apiaryName
+                for h in ap.hives
+                  a.sidebar-item.item=h.Name
+                else
+                  p(style="margin-left: 5px") #{ap.apiaryName} está vacio
+          else 
+            .item
+              .menu
+                .header No tienes apiarios
+      button#add-apiario-btn.ui.blue.button 
+        i.plus.circle.icon
+        |Agregar Apiario

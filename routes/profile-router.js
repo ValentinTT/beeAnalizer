@@ -11,7 +11,7 @@ const authCheck = (req, res, next) => {
 routes.get('/', authCheck, (req, res) => {
   console.log(req.user);
   res.render('profile', {
-    //apiarios: req.user.apiaries,
+    apiarios: req.user.apiaries,
     avatarPhoto: req.user.googlePhotoUrl
   });
 });

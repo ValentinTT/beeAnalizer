@@ -1,0 +1,29 @@
+mixin modal(apiarios=[])
+  .ui.modal
+    .header
+      h1.ui.header Crear un nuevo apiario
+    .content
+      form(action="" method="POST").ui.form
+        .field#input-file-field
+          input(type="file" accept="text/plain").ui.inputfile#embedpollfileinput
+          label(for="embedpollfileinput").fluid.ui.large.yellow.right.floated.button
+            i.ui.upload.icon
+            |Subir archivo
+        label Seleccione donde desea guardar la informacion
+        .field
+          .ui.radio.checkbox
+            input(id="new-apiary-rb" type="radio" name="rb-where-to-save" value="new-apiary" checked)
+            label(for="new-apiary-rb") Nuevo Apiario
+        #new-apiary-name
+          input(type="text" placeholder="Ingrese el nombre del apiario")
+        .field
+          .ui.radio.checkbox
+            input(id="existing-apiary-rb" type="radio" name="rb-where-to-save" value="existing-apiary")
+            label(for="existing-apiary-rb") Existente
+        #dropdown-existing-apiary.invisible          
+          select.ui.dropdown
+            option(value="" disabled selected) Seleccione el apiario
+            for ap in apiarios
+              option(value=ap)=ap
+        button(type="reset").large.negative.ui.left.floated.button#cancelar-subida Cancelar
+        input(type="submit" value="Agregar Apiario").large.positive.ui.right.floated.button

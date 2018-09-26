@@ -1,17 +1,23 @@
 include includes/mixins
+include profile/modal.pug
+include profile/sidebar.pug
+include profile/header.pug
+include profile/chart-board.pug
 
+-const apiarios = [{apiaryName: "AP1",hives: [{Name: "H1"},{Name: "H2"},{Name: "H3"},{Name: "H4"}]}, {apiaryName: "AP2",hives: [{Name: "H1"},{Name: "H2"}]}];
+//-const avatarPhoto = "https://lh3.googleusercontent.com/-3ow3MVOvYKs/AAAAAAAAAAI/AAAAAAAAAAA/APUIFaOd5JcehzeqVeLDgz1IurI1AGzwZA/mo/photo.jpg?sz=50";
+-let apiariosName = []
+for ap in apiarios
+  -apiariosName.push(ap.apiaryName)
+doctype html
 html
   head
-    +head("Home", ["/styles/profile.min.css"], ["https://code.jquery.com/jquery-3.3.1.min.js"])
-  body
-    header
-      h1.title
-        |Bee Analizer
-      .User-area
-        .User-avatar
-          img(src="https://via.placeholder.com/40x40")
-        ul.User-Dropdown
-          li
-            a(href="/auth/logout") Log out
+    +head("Home", ["/semantic.css", "/styles/profile.min.css"], ["https://code.jquery.com/jquery-3.3.1.min.js", "/semantic.js", "/js/profile.js"])
+  body 
+    +header(avatarPhoto)
+    main.ui.bottom.attached.segment.pushable
+      +sidebar(apiarios)
+      +chart-board()
+    +modal(apiariosName)
+    script(src="profile.js")
   
-    +footerScripts(["/js/profile.js"])

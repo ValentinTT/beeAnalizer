@@ -1,0 +1,14 @@
+mixin header(photo="")
+  header
+    .center-content
+      button.ui.circular.icon.basic.button#open-sidebar
+        i.yellow.bars.large.icon
+    h3.title
+      |Bee Analizer
+    .center-content
+      .User-area
+        .User-avatar
+          img(src=photo)
+        ul.User-Dropdown
+          li
+            a(href="/auth/logout") Log out
