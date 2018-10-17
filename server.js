@@ -3,6 +3,7 @@ require("./db/connection").initDB();
 
 const express = require("express");
 const passport = require("passport");
+const bodyParser = require('body-parser');
 require("./passport-setup");
 const cookieSession = require("cookie-session");
 const authRoutes = require("./routes/auth-routes").Router;
@@ -11,8 +12,11 @@ const port = process.env.PORT || 3000;
 
 const app = express();
 app.set("view engine", "pug");
+app.set("views", __dirname + "/views");
 app.use(express.static(__dirname + "/public"));
 app.use(express.static(__dirname + "/semantic/out"));
+
+app.use(bodyParser.json());
 
 //Cookie and sessions with passport
 app.use(

@@ -45,6 +45,7 @@ $(document).ready(() => {
       $('input[type="file"]+label').html("Archivo: " + fileName);
     }
   });
+
   $('.sidebar-item').click((e) => {
     $('.ui.sidebar').sidebar('hide');
     currentApiary = $($(e.target).parent().children()[0]).text();
@@ -79,17 +80,63 @@ $(document).ready(() => {
         break;
     }
   });
+
+  $("form").on("submit", function (event) {
+    event.preventDefault();
+
+    let fileName = $('input[type="file"]').val();
+    fileName = fileName.slice(fileName.lastIndexOf('\\') + 1);
+    if (!fileName) {
+      alert("Debes seleccionar un archivo para subir");
+      return;
+    }
+
+    let data = {};
+    data.file = document.getElementById('embedpollfileinput').files[0];
+    let whereToSave = $(this).serialize();
+    if (whereToSave.includes("new")) {
+      data["where-to-save"] = "new-apiary";
+      data["apiary-name"] = $('input[type="text"]').val();
+      if (!data["apiary-name"]) {
+        alert("Debes ingresar un nombre para el nuevo apiario");
+        return;
+      }
+    } else if (whereToSave.includes("existing")) {
+      data["where-to-save"] = "existing-apiary";
+      data["apiary-name"] = $('.dropdown').dropdown('get value');
+      if (data["apiary-name"].includes("Seleccione el apiario")) {
+        alert("Debes seleccionar un apiario");
+        return;
+      }
+    }
+    let FD = new FormData();
+    for (let name in data) {
+      FD.append(name, data[name]);
+    }
+
+    fetch("/profile", {
+        method: "POST",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        redirect: 'follow',
+        body: FD
+      })
+      .then(response => {
+        if (response.redirected) window.location = response.url;
+      });
+  });
 });
 
 const humTempIntChart = () => {
   console.log("humTempIntChart");
-}
+};
 const humTempExtChart = () => {
   console.log("humTempExtChart");
-}
+};
 const fumesChart = () => {
   console.log("fumesChart");
-}
+};
 const sequrityChart = () => {
   console.log("sequrityChart");
-}
+};

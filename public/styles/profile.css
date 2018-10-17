@@ -223,4 +223,8 @@ nav #add-apiario-btn {
 #new-apiary-name, #dropdown-existing-apiary {
   margin-bottom: 15px;
 }
+
+.ui.dropdown {
+  width: 100%;
+}
 /*# sourceMappingURL=profile.css.map */

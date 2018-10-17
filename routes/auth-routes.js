@@ -27,7 +27,6 @@ routes.get('/google', passport.authenticate('google', {
 
 //calback route for google to redirect to
 routes.get('/google/redirect', passport.authenticate('google', {
-
     failureRedirect: '/'
   }),
   (req, res) => {

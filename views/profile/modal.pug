@@ -3,7 +3,7 @@ mixin modal(apiarios=[])
     .header
       h1.ui.header Crear un nuevo apiario
     .content
-      form(action="" method="POST").ui.form
+      form(action="/profile" method="POST" enctype="multipart/form-data").ui.form
         .field#input-file-field
           input(type="file" accept="text/plain").ui.inputfile#embedpollfileinput
           label(for="embedpollfileinput").fluid.ui.large.yellow.right.floated.button
