@@ -24,6 +24,6 @@ mixin modal(apiarios=[])
           select.ui.dropdown
             option(value="" disabled selected) Seleccione el apiario
             for ap in apiarios
-              option(value=ap)=ap
+              option(value=ap.apiaryName)=ap.apiaryName
         button(type="reset").large.negative.ui.left.floated.button#cancelar-subida Cancelar
         input(type="submit" value="Agregar Apiario").large.positive.ui.right.floated.button
