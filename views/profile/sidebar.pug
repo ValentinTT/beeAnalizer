@@ -9,7 +9,7 @@ mixin sidebar(apiarios=[])
               .menu
                 .header=ap.apiaryName
                 for h in ap.hives
-                  a.sidebar-item.item=h.Name
+                  a.sidebar-item.item=h.id
                 else
                   p(style="margin-left: 5px") #{ap.apiaryName} está vacio
           else 

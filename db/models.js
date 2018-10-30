@@ -20,11 +20,11 @@ const dataSchema = new Schema({
   },
   outterTemperature: {
     type: Number,
-    required: true
+    required: false
   },
   outterHumidity: {
     type: Number,
-    required: true
+    required: false
   },
   safe: {
     type: Number,
@@ -32,7 +32,7 @@ const dataSchema = new Schema({
   },
   fumes: {
     type: Number,
-    required: true
+    required: false
   }
 });
 const hiveSchema = new Schema({

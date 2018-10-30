@@ -1,9 +1,10 @@
 mixin chart-board() 
   section.pusher
+    h4#selected-hive.ui.dividing.center.aligned.header Selecciona una colmena para vizualizar
     .ui.top.secondary.pointing.menu
-      a.item Humedad y Temperatura Interna
-      a.item Humedad y Temperatura Externa
+      a.item Temperatura Interna
+      a.item Humedad Interna
       a.item Niveles de Humo
       a.item Seguridad
-    .ui.segment
-      .chart-container
+    .ui.chart-container
+      #chart

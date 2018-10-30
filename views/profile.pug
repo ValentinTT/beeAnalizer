@@ -8,16 +8,18 @@ include profile/chart-board.pug
 //-const avatarPhoto = "https://lh3.googleusercontent.com/-3ow3MVOvYKs/AAAAAAAAAAI/AAAAAAAAAAA/APUIFaOd5JcehzeqVeLDgz1IurI1AGzwZA/mo/photo.jpg?sz=50";
 -let apiariosName = []
 for ap in apiarios
-  -apiariosName.push(ap.apiaryName)
+  -apiariosName.push(ap)
 doctype html
 html
   head
-    +head("Home", ["/semantic.css", "/styles/profile.min.css"], ["https://code.jquery.com/jquery-3.3.1.min.js", "/semantic.js", "/js/profile.js"])
+    +head("Home", ["/semantic.css", "/styles/profile.min.css"], ["https://code.jquery.com/jquery-3.3.1.min.js", "/semantic.js", "https://cdn.jsdelivr.net/npm/apexcharts", "/js/profile.js"])
   body 
     +header(avatarPhoto)
     main.ui.bottom.attached.segment.pushable
       +sidebar(apiarios)
       +chart-board()
     +modal(apiariosName)
+    script.
+      var dataApiaries = !{dataApiaries} 
     script(src="profile.js")
   
