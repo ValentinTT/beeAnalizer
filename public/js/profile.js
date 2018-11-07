@@ -56,6 +56,7 @@ $(document).ready(() => {
     currentHive = $(e.target).text();
     console.log(currentApiary + " - " + currentHive);
     $("#selected-hive").text("Colmena " + currentHive + " del apiario " + currentApiary);
+    innerTempChart();
   });
 
   $('.ui.sidebar')
@@ -163,8 +164,15 @@ const innerTempChart = () => {
   cleanChartContainer();
   let options = {
     chart: {
-      type: 'area',
-      stacked: false,
+      type: 'line',
+      shadow: {
+        enabled: true,
+        color: '#000',
+        top: 18,
+        left: 7,
+        blur: 10,
+        opacity: 1
+      },
       height: 500,
       width: '99%',
       zoom: {
@@ -175,23 +183,13 @@ const innerTempChart = () => {
         autoSelected: 'zoom'
       }
     },
-    plotOptions: {
-      line: {
-        curve: 'smooth',
-
-      }
-    },
     dataLabels: {
-      enabled: false
+      enabled: true
     },
     series: [{
       name: 'Temperatura Interna',
       data: seriesData
     }],
-    markers: {
-      size: 0,
-      style: 'full',
-    },
     yaxis: {
       min: Math.min.apply(null, seriesData) - 10,
       max: Math.max.apply(null, seriesData) + 10
@@ -203,6 +201,17 @@ const innerTempChart = () => {
 
     tooltip: {
       shared: false,
+    },
+    grid: {
+      borderColor: '#e7e7e7',
+      row: {
+        colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+        opacity: 0.5
+      },
+    },
+    markers: {
+      style: 'inverted',
+      size: 6
     }
   };
 
@@ -222,8 +231,15 @@ const innerHumChart = () => {
   cleanChartContainer();
   let options = {
     chart: {
-      type: 'area',
-      stacked: false,
+      type: 'line',
+      shadow: {
+        enabled: true,
+        color: '#000',
+        top: 18,
+        left: 7,
+        blur: 10,
+        opacity: 1
+      },
       height: 500,
       width: '99%',
       zoom: {
@@ -234,22 +250,13 @@ const innerHumChart = () => {
         autoSelected: 'zoom'
       }
     },
-    plotOptions: {
-      line: {
-        curve: 'smooth',
-      }
-    },
     dataLabels: {
-      enabled: false
+      enabled: true
     },
     series: [{
       name: 'Humedad Interna',
       data: seriesData
     }],
-    markers: {
-      size: 0,
-      style: 'full',
-    },
     yaxis: {
       min: Math.min.apply(null, seriesData) - 10,
       max: Math.max.apply(null, seriesData) + 10
@@ -261,6 +268,17 @@ const innerHumChart = () => {
 
     tooltip: {
       shared: false,
+    },
+    grid: {
+      borderColor: '#e7e7e7',
+      row: {
+        colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+        opacity: 0.5
+      },
+    },
+    markers: {
+      style: 'inverted',
+      size: 6
     }
   };
 
@@ -285,7 +303,7 @@ const fumesChart = () => {
       type: 'bar',
       stacked: false,
       height: 500,
-      width: "90%",
+      width: "99%",
       zoom: {
         type: 'x',
         enabled: true
@@ -379,7 +397,7 @@ const sequrityChart = () => {
       type: 'bar',
       stacked: false,
       height: 500,
-      width: "90%",
+      width: "99%",
       zoom: {
         type: 'x',
         enabled: true
@@ -435,7 +453,7 @@ const sequrityChart = () => {
         },
       },
       min: 0,
-      max: 3,
+      max: 10,
       tickAmount: 3,
     },
     fill: {
