@@ -381,7 +381,16 @@ const fumesChart = () => {
 };
 const sequrityChart = () => {
   console.log("sequrityChart");
-
+  let securityLevel = {
+    10: "Todo en orden",
+    9: "Trampa de polen retirada",
+    8: "Humo en la colmena",
+    7: "Humo en la colmena y trampa retirada",
+    5: "Movimiento de la colmena",
+    4: "Movimiento de la colmena y trampa retirada",
+    3: "Humo y movimiento en la colmena",
+    2: "Humo, movimiento y trampa de Humo"
+  };
   if (currentApiary.length < 1) return;
   let graphData = dataApiaries.find(apiariy => apiariy.apiaryName == currentApiary)
     .hives.find(hive => hive.id == currentHive);
@@ -429,7 +438,7 @@ const sequrityChart = () => {
       width: 2
     },
     series: [{
-      name: 'Nivel de seguridad',
+      name: 'Estado',
       data: seriesData
     }],
     grid: {
@@ -469,6 +478,13 @@ const sequrityChart = () => {
         stops: [50, 0, 100]
       },
     },
+    tooltip: {
+      y: {
+        formatter: (val) => {
+          return securityLevel[val];
+        }
+      }
+    }
   };
   SChart = new ApexCharts(document.querySelector("#chart"), options);
   SChart.render();
