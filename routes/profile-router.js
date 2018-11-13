@@ -46,14 +46,17 @@ routes
         };
         apiary.hives = numberOfHives.map(number => ({
           id: number,
-          data: data.filter(d => d.id == number).map(d => ({
-            time: d.time,
-            innerTemperature: d.data.temperature,
-            innerHumidity: d.data.humidity,
-            entrance: d.data.hiveEntrance,
-            safe: d.data.safe,
-            fumes: d.data.fumesLevel || -100
-          }))
+          data: data.filter(d => d.id == number).map(d => {
+            let data = {
+              time: d.time,
+              safe: d.data.safe
+            };
+            if (d.data.temperature) data.innerTemperature = d.data.temperature;
+            if (d.data.humidity) data.innerHumidity = d.data.humidity;
+            if (d.data.hiveEntrance) data.entrance = d.data.hiveEntrance;
+            if (d.data.fumesLevel) data.fumes = d.data.fumesLevel;
+            return data;
+          })
         }));
         beekeeper.apiaries.push(apiary);
         beekeeper.save((err, b) => {
@@ -68,25 +71,29 @@ routes
           if (!hive) {
             apiary.hives.push({
               id: number,
-              data: data.filter(d => d.id == number).map(d => ({
-                time: d.time,
-                innerTemperature: d.data.temperature,
-                innerHumidity: d.data.humidity,
-                entrance: d.data.hiveEntrance,
-                safe: d.data.safe,
-                fumes: d.data.fumesLevel || -100
-              }))
+              data: data.filter(d => d.id == number).map(d => {
+                let data = {
+                  time: d.time,
+                  safe: d.data.safe
+                };
+                if (d.data.temperature) data.innerTemperature = d.data.temperature;
+                if (d.data.humidity) data.innerHumidity = d.data.humidity;
+                if (d.data.hiveEntrance) data.entrance = d.data.hiveEntrance;
+                if (d.data.fumesLevel) data.fumes = d.data.fumesLevel;
+                return data;
+              })
             });
           } else {
             hive.data = [...hive.data, ...data.filter(d => d.id == number).map(d => {
-              return {
+              let data = {
                 time: d.time,
-                innerTemperature: d.data.temperature,
-                innerHumidity: d.data.humidity,
-                entrance: d.data.hiveEntrance,
-                safe: d.data.safe,
-                fumes: d.data.fumesLevel || -100
+                safe: d.data.safe
               };
+              if (d.data.temperature) data.innerTemperature = d.data.temperature;
+              if (d.data.humidity) data.innerHumidity = d.data.humidity;
+              if (d.data.hiveEntrance) data.entrance = d.data.hiveEntrance;
+              if (d.data.fumesLevel) data.fumes = d.data.fumesLevel;
+              return data;
             })];
           }
         });

@@ -8,15 +8,15 @@ const dataSchema = new Schema({
   },
   innerTemperature: {
     type: Number,
-    required: true
+    required: false
   },
   innerHumidity: {
     type: Number,
-    required: true
+    required: false
   },
   entrance: {
     type: Number,
-    required: true
+    required: false
   },
   outterTemperature: {
     type: Number,

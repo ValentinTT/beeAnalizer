@@ -56,6 +56,8 @@ $(document).ready(() => {
     currentHive = $(e.target).text();
     console.log(currentApiary + " - " + currentHive);
     $("#selected-hive").text("Colmena " + currentHive + " del apiario " + currentApiary);
+    $(".pointing.menu>.item.active").removeClass('active');
+    $('.pointing.menu>a:first').addClass('active ');
     innerTempChart();
   });
 
@@ -291,12 +293,13 @@ const fumesChart = () => {
   if (currentApiary.length < 1) return;
   let graphData = dataApiaries.find(apiariy => apiariy.apiaryName == currentApiary)
     .hives.find(hive => hive.id == currentHive);
-  graphData = graphData.data.map(d => ({
+  graphData = graphData.data.filter(d => d.fumes).map(d => ({
     time: new Date(d.time),
     fumes: d.fumes
   }));
   seriesData = graphData.map(d => d.fumes);
-
+  console.log(graphData);
+  console.log(seriesData);
   cleanChartContainer();
   let options = {
     chart: {
@@ -462,7 +465,7 @@ const sequrityChart = () => {
         },
       },
       min: 0,
-      max: 10,
+      max: 11,
       tickAmount: 3,
     },
     fill: {
